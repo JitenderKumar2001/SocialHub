@@ -3,9 +3,10 @@ import axios from "axios";
 import Navbar from "./Navbar";
 import Main from "./Main";
 import Card from "./Card"
+import { Container, Grid } from "@mui/material";
 
 function App(){
-    const [post, setPost] = useState(null);
+    const [posts, setPost] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -19,8 +20,21 @@ function App(){
         <>
             <Navbar />
             <Main />
-            <Card />
-            <Card />
+            <Container sx={{mt:7, textAlign:"center"}}>
+                <h1>Our Products</h1>
+                <Grid container spacing={2}>
+                    {posts && posts.map(item => {
+                        return (
+                            <>
+                                <Grid key={item.id} item xs={4}>
+                                <Card item={item}/>
+                                </Grid>
+                                
+                            </>
+                        )
+                    })}
+                </Grid>    
+            </Container>
         </>
     );
 }

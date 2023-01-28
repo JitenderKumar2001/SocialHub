@@ -1,32 +1,27 @@
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea, Container } from "@mui/material";
+import { CardActionArea} from "@mui/material";
 
-export default function ActionAreaCard() {
+export default function ActionAreaCard(item) {
   return (
-    <Container>
+  
       <Card sx={{ maxWidth: 345 }}>
         <CardActionArea>
-          <CardMedia
-            component="img"
-            height="140"
-            image="/static/images/cards/contemplative-reptile.jpg"
-            alt="green iguana"
-          />
           <CardContent sx={{textAlign:'center'}}>
+          <img 
+          src={item.item.image} alt="err"
+          style={{width:"200px", padding:"10px", height:"280px"}} 
+          />
             <Typography gutterBottom variant="h5" >
-              Product
+              {item.item.title.substr(0,15)}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
+              {item.item.description.substr(0,130)}...
             </Typography>
-            <Typography variant="subtitle2">Price: 1500</Typography>
+            <Typography variant="subtitle2" sx={{pt:1}}>Price: ${item.item.price}</Typography>
           </CardContent>
         </CardActionArea>
       </Card>
-    </Container>
   );
 }
